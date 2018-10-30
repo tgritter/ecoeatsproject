@@ -23,7 +23,7 @@ from articles import views as article_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('accounts.urls')),
-    url(r'^articles/', include('articles.urls')),
+    url(r'^newsfeed/', include('articles.urls')),
     url(r'^about/$', views.about),
     url(r'^$', article_views.article_list, name="home")
 ]

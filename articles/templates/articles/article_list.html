@@ -1,7 +1,7 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-    <h1>Article List</h1>
+    <h1>News Feed</h1>
     <div class="articles">
         {% for article in articles %}
             <div class="article">
@@ -10,7 +10,7 @@
                 <p>{{ article.date }}</p>
                 <p class="author">added by {{ article.author.username }}</p>
                 {% if article.author == user %}
-                    <p class="edit"><a href="{% url 'articles:edit_post' id=article.id %}">Edit</p>
+                    <a href="{% url 'articles:edit_post' id=article.id %}" class="edit">Edit</a>
                 {% endif %}
             </div>
         {% endfor %}
