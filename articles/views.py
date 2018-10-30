@@ -14,7 +14,7 @@ def article_detail(request, slug):
     article = Article.objects.get(slug=slug)
     return render(request, 'articles/article_detail.html', {'article':article})
 
-def edit_post(request, id):
+def edit_post(request, id): 
     article = get_object_or_404(Article, id=id)
     if request.method == "POST":  
         form = forms.CreateArticle(request.POST, instance=article)
@@ -25,7 +25,7 @@ def edit_post(request, id):
             return redirect('articles:list')
     else:
         form = forms.CreateArticle(instance=article)
-    return render(request, 'articles/article_create.html', {'form':form})
+    return render(request, 'articles/article_edit.html', {'form':form})
 
 
 

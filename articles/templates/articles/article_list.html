@@ -12,7 +12,7 @@
                 {% if article.author == user %}
                     <a href="{% url 'articles:edit_post' id=article.id %}" class="edit">Edit</a>
                 {% endif %}
-            </div>
+            </div> 
         {% endfor %}
     </div>
 {% endblock %}
