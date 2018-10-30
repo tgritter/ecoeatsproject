@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -76,12 +76,9 @@ WSGI_APPLICATION = 'ecoeats.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASE_URL = 'postgres://lwlllsoxrvwqxz:9cdee1c87cba9a702f865a5056e8f052ec1c0c7cd37de89c86eb7a3205570187@ec2-54-83-38-174.compute-1.amazonaws.com:5432/d70jqhpt142pla'
+
+DATABASES = {'default': dj_database_url.config(default='postgres://lwlllsoxrvwqxz:9cdee1c87cba9a702f865a5056e8f052ec1c0c7cd37de89c86eb7a3205570187@ec2-54-83-38-174.compute-1.amazonaws.com:5432/d70jqhpt142pla')}
 
 
 # Password validation

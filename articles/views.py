@@ -15,16 +15,16 @@ def article_detail(request, slug):
     return render(request, 'articles/article_detail.html', {'article':article})
 
 def edit_post(request, id): 
-    article = get_object_or_404(Article, id=id)
+    article = Article.objects.get(id__exact=id)
     if request.method == "POST":  
-        form = forms.CreateArticle(request.POST, instance=article)
+        form = forms.UpdateArticle(request.POST, request.FILES, instance=article)
         if form.is_valid():
             article = form.save(commit=False)
             article.author = request.user
             article.save()
             return redirect('articles:list')
     else:
-        form = forms.CreateArticle(instance=article)
+        form = forms.UpdateArticle(instance=article)
     return render(request, 'articles/article_edit.html', {'form':form})
 
 
