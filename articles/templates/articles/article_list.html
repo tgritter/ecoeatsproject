@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    <h1>Article List</h1>
+    <div class="articles">
+        {% for article in articles %}
+            <div class="article">
+                <h2><a href="{% url 'articles:detail' slug=article.slug %}">{{ article.title }}</a></h2>
+                <p>{{ article.body }}</p>
+                <p>{{ article.date }}</p>
+                <p class="author">added by {{ article.author.username }}</p>
+                {% if article.author == user %}
+                    <p class="edit"><a href="{% url 'articles:edit_post' id=article.id %}">Edit</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
